@@ -14,5 +14,5 @@ jobs:
 
       - name: dotnet build and publish
         run: |
-          dotnet build --configuration Release ./src/RTGS.DotNetSDK/
-          dotnet pack -c Release ./src/RTGS.DotNetSDK/RTGS.DotNetSDK.Publisher/RTGS.DotNetSDK.Publisher.csproj --nobuild
+          dotnet build --configuration Release OsMath/OsMathService/OsMathService.csproj
+          dotnet pack -c Release OsMath/OsMathService/OsMathService.csproj --nobuild
