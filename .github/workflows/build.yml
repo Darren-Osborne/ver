@@ -12,7 +12,7 @@ jobs:
         with:
           dotnet-version: "5.0.x"
 
-      - name: dotnet build and publish
+      - name: dotnet build
         run: |
           dotnet build --configuration Release OsMath/OsMathService/OsMathService.csproj
           dotnet pack -c Release OsMath/OsMathService/OsMathService.csproj --no-build
