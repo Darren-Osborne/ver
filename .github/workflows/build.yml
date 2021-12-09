@@ -15,4 +15,4 @@ jobs:
       - name: dotnet build and publish
         run: |
           dotnet build --configuration Release OsMath/OsMathService/OsMathService.csproj
-          dotnet pack -c Release OsMath/OsMathService/OsMathService.csproj --nobuild
+          dotnet pack -c Release OsMath/OsMathService/OsMathService.csproj --no-build
