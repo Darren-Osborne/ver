@@ -20,7 +20,7 @@
                     {
                         "name": "[parameters('containerGroups_deploy_spike_name')]",
                         "properties": {
-                            "image": "mcr.microsoft.com/azuredocs/aci-helloworld:latest",
+                            "image": "dosbornelcc/lccrepo",
                             "ports": [
                                 {
                                     "protocol": "TCP",
