@@ -27,5 +27,5 @@ steps:
     resourceGroupName: 'Darren_Deploy_Spike'
     location: 'UK South'
     templateLocation: 'URL of the file'
-    csmFileLink: 'https://raw.githubusercontent.com/Darren-Osborne/ver/main/template.json?token=GHSAT0AAAAAABPA33LKT7Z7DLZOKFNFUIGOYPY6AYQ'
+    csmFileLink: 'https://raw.githubusercontent.com/Darren-Osborne/ver/main/template.json'
     deploymentMode: 'Incremental'
