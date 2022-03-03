@@ -25,7 +25,6 @@ steps:
     subscriptionId: '6c9aba91-2586-46e2-92e6-d6b86f6c6935'
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'Darren_Deploy_Spike'
-    location: 'UK South'
     templateLocation: 'URL of the file'
     csmFileLink: 'https://raw.githubusercontent.com/Darren-Osborne/ver/main/template.json'
     deploymentMode: 'Incremental'
