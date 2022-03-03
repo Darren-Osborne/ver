@@ -26,6 +26,6 @@ steps:
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'Darren_Deploy_Spike'
     templateLocation: 'URL of the file'
-    location: "Ignored_As_Group_Must_Already_Exist"
+    location: "IGNORED - group must exist already"
     csmFileLink: 'https://raw.githubusercontent.com/Darren-Osborne/ver/main/template.json'
     deploymentMode: 'Incremental'
