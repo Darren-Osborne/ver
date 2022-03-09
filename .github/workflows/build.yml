@@ -9,13 +9,15 @@ jobs:
   create-nuget-package:
     runs-on: ubuntu-latest
     steps: 
-      - uses: actions/checkout@v1
-      - name: Setup .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: "5.0.x"
-
-      - name: dotnet build
-        run: |
-          dotnet build --configuration Release ${Project_Path}/OsMathService.csproj
-          dotnet pack -c Release ${Project_Path}/OsMathService.csproj --no-build
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_PIPELINES_PAT }}
+        
+    - name: Azure CLI script
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.30.0
+        inlineScript: |
+          az account show
+          az storage -h
