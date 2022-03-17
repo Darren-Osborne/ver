@@ -37,5 +37,4 @@ jobs:
         with:
           azPSVersion: '3.1.0'
           inlineScript: |
-            hostname
-            Get-AzContext
+            az pipelines list -o table
