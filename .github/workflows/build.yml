@@ -25,4 +25,4 @@ jobs:
         with:
           inlineScript: |
             az extension add --name azure-devops
-            az pipelines build show --id 26029 --organization ${{ secrets.AZURE_DEVOPS_ORG_URL }} --project ${{ secrets.AZURE_DEVOPS_PROJECT }} -o table
+            az pipelines build show --id 26029 --organization https://dev.azure.com/rtgs-global/ --project RTGS-Global -o table
