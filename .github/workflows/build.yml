@@ -26,5 +26,5 @@ jobs:
           azcliversion: 2.30.0
           inlineScript: |
             az extension add --name azure-devops
-            az devops configure --defaults organization=${{ secrets.AZURE_DEVOPS_ORG_URL }} project= ${{ secrets.AZURE_DEVOPS_PROJECT }}
+            az devops configure --defaults organization=${{ secrets.AZURE_DEVOPS_ORG_URL }} project=${{ secrets.AZURE_DEVOPS_PROJECT }}
             az pipelines list -o table
