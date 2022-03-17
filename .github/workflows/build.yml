@@ -1,6 +1,6 @@
 name: Build
 
-on: push 
+on: push
 
 env:
   Project_Path: OsMath/OsMathService
@@ -8,9 +8,8 @@ env:
 jobs:
   trigger-pipeline:
     runs-on: ubuntu-latest
-    steps: 
+    steps:
       - name: Azure Pipelines Action
-        # The following does need to be 1.2 (or later) otherwise the azure-pipeline-variables are not passed to the pipeline.
         uses: Azure/pipelines@v1.2
         with:
           azure-devops-project-url: ${{ secrets.AZURE_DEVOPS_PROJECT_URL }}
@@ -26,5 +25,4 @@ jobs:
         with:
           azcliversion: 2.30.0
           inlineScript: |
-            az account show
-            az storage -h
+            az devops --help
