@@ -23,14 +23,10 @@ steps:
     targetType: 'inline'
     script: 'Write-Host "Default working directory: $(System.DefaultWorkingDirectory)"' 
 
-# - task: AzureResourceManagerTemplateDeployment@3
-#   inputs:
-#     deploymentScope: 'Resource Group'
-#     azureResourceManagerConnection: 'rtgs-integration-dev'
-#     subscriptionId: '6c9aba91-2586-46e2-92e6-d6b86f6c6935'
-#     action: 'Create Or Update Resource Group'
-#     resourceGroupName: 'Darren_Deploy_Spike'
-#     templateLocation: 'URL of the file'
-#     location: "IGNORED - group must exist already"
-#     csmFileLink: 'https://raw.githubusercontent.com/Darren-Osborne/ver/main/template.json'
-#     deploymentMode: 'Incremental'
+- name: Azure Pipelines Action
+  uses: Azure/pipelines@v1.2
+  with:
+    azure-devops-project-url: ${{ secrets.AZURE_DEVOPS_PROJECT_URL }}
+    azure-pipeline-name: ${{ secrets.AZURE_DEVOPS_VER_PIPELINE }}
+    azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+
