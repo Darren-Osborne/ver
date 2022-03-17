@@ -15,14 +15,31 @@ jobs:
           azure-devops-project-url: ${{ secrets.AZURE_DEVOPS_PROJECT_URL }}
           azure-pipeline-name: ${{ secrets.AZURE_DEVOPS_VER_PIPELINE_V2 }}
           azure-devops-token: ${{ secrets.AZURE_PIPELINES_PAT }}
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.DEVOPS_CREDENTIALS }}
+      # - name: Azure Login
+      #   uses: azure/login@v1
+      #   with:
+      #     creds: ${{ secrets.DEVOPS_CREDENTIALS }}
 
-      - name: Azure CLI script
-        uses: azure/CLI@v1
+      # - name: Azure CLI script
+      #   uses: azure/CLI@v1
+      #   with:
+      #     inlineScript: |
+      #       az extension add --name azure-devops
+      #       az pipelines build show --id 26029 --organization https://dev.azure.com/rtgs-global/ --project RTGS-Global -o table
+  get-pipeline-status:
+    runs-on: windows-latest
+    needs: trigger-pipeline
+    steps:
+      - name: Login Az Powershell
+        uses: azure/login@releases/v1
         with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: do stuff
+        uses: azure/powershell@v1
+        with:
+          azPSVersion: '3.1.0'
           inlineScript: |
-            az extension add --name azure-devops
-            az pipelines build show --id 26029 --organization https://dev.azure.com/rtgs-global/ --project RTGS-Global -o table
+            hostname
+            Get-AzContext
+            Get-AzResourceGroup
