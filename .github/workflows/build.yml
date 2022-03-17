@@ -25,7 +25,7 @@ jobs:
   #       az pipelines build show --id 26029 --organization https://dev.azure.com/rtgs-global/ --project RTGS-Global -o table
   get-pipeline-status:
     runs-on: windows-latest
-    needs: trigger-pipeline
+    #needs: trigger-pipeline
     steps:
       - name: Login Az Powershell
         uses: azure/login@releases/v1
