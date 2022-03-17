@@ -2,3 +2,4 @@
 **/obj/**
 *.suo
 /OsMath/.vs/**
+/.vscode/

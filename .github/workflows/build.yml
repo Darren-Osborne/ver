@@ -33,7 +33,7 @@ jobs:
       - name: Login Az Powershell
         uses: azure/login@releases/v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          creds: ${{ secrets.DEVOPS_CREDENTIALS }}
 
       - name: do stuff
         uses: azure/powershell@v1
