@@ -37,4 +37,4 @@ jobs:
         with:
           azPSVersion: '3.1.0'
           inlineScript: |
-            az pipelines list -o table
+            az pipelines list --organization https://dev.azure.com/rtgs-global/ --project RTGS-Global -o table
