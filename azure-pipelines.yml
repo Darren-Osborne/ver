@@ -23,10 +23,3 @@ steps:
     targetType: 'inline'
     script: 'Write-Host "Default working directory: $(System.DefaultWorkingDirectory)"' 
 
-- name: Azure Pipelines Action
-  uses: Azure/pipelines@v1.2
-  with:
-    azure-devops-project-url: ${{ secrets.AZURE_DEVOPS_PROJECT_URL }}
-    azure-pipeline-name: ${{ secrets.AZURE_DEVOPS_VER_PIPELINE }}
-    azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
-
