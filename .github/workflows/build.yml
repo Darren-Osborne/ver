@@ -16,3 +16,10 @@ jobs:
           azure-devops-project-url: ${{ secrets.AZURE_DEVOPS_PROJECT_URL }}
           azure-pipeline-name: ${{ secrets.AZURE_DEVOPS_VER_PIPELINE_V2 }}
           azure-devops-token: ${{ secrets.AZURE_PIPELINES_PAT }}
+      - name: az
+        uses: AzureCLI@2
+        with:
+          azureSubscription: 'rtgs-devops'
+          scriptType: 'bash'
+          scriptLocation: 'inlineScript'
+          inlineScript: 'az --version'
