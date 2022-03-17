@@ -37,4 +37,5 @@ jobs:
         with:
           azPSVersion: '3.1.0'
           inlineScript: |
+            az login --service-principal -u ${{ secrets.AZ_CLIENT_ID }} -p ${{ secrets.AZ_CLIENT_SECRET }} --tenant ${{ secrets.AZ_TENANT_ID}}
             az pipelines list --organization https://dev.azure.com/rtgs-global/ --project RTGS-Global -o table
