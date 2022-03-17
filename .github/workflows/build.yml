@@ -6,18 +6,13 @@ env:
   Project_Path: OsMath/OsMathService
 
 jobs:
-  create-nuget-package:
+  trigger-pipeline:
     runs-on: ubuntu-latest
     steps: 
-    - name: Azure Login
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_PIPELINES_PAT }}
-        
-    - name: Azure CLI script
-      uses: azure/CLI@v1
-      with:
-        azcliversion: 2.30.0
-        inlineScript: |
-          az account show
-          az storage -h
+      - name: Azure Pipelines Action
+        # The following does need to be 1.2 (or later) otherwise the azure-pipeline-variables are not passed to the pipeline.
+        uses: Azure/pipelines@v1.2
+        with:
+          azure-devops-project-url: ${{ secrets.AZURE_DEVOPS_PROJECT_URL }}
+          azure-pipeline-name: ${{ secrets.AZURE_DEVOPS_VER_PIPELINE_V2 }}
+          azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
