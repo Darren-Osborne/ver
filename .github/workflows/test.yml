@@ -28,4 +28,4 @@ jobs:
       - name: Echo
         if: steps.getDataFactoryName.outputs.factoryName
         run: |
-          echo steps.getDataFactoryName.outputs.factoryName
+          echo ${{ steps.getDataFactoryName.outputs.factoryName }}
