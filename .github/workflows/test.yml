@@ -7,7 +7,7 @@ jobs:
     strategy:
       max-parallel: 1
       matrix:
-        env: [Dev]
+        env: [Dev, QA]
     runs-on: ubuntu-latest
     name: deploy ${{matrix.env}}
     environment: ${{matrix.env}}
@@ -25,9 +25,7 @@ jobs:
           factoryName=$(az datafactory list --resource-group konexis-rg --query "[].[name][0]" --output tsv)
           echo "factoryName=$factoryName" >> $GITHUB_OUTPUT
 
-      - name: Disable trigger
-        uses: azure/CLI@v1
+      - name: Echo
         if: steps.getDataFactoryName.outputs.factoryName
-        with:
-          inlineScript: |
-            az datafactory trigger start --resource-group konexis-rg --factory-name "${{ steps.getDataFactoryName.outputs.factoryName }}" --name "invoice-pipeline-trigger"
+        run: |
+          echo steps.getDataFactoryName.outputs.factoryName
