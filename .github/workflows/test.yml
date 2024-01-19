@@ -27,7 +27,7 @@ jobs:
 
       - name: Disable trigger
         uses: azure/CLI@v1
-        if: steps.getDataFactoryName.outputs.factoryName
+        #if: steps.getDataFactoryName.outputs.factoryName
         with:
           inlineScript: |
             az datafactory trigger stop --resource-group "${{ secrets.AZURE_RG }}" --factory-name "${{ steps.getDataFactoryName.outputs.factoryName }}" --name "invoice-pipeline-trigger"
