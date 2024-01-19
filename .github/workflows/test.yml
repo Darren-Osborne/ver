@@ -30,4 +30,4 @@ jobs:
         if: steps.getDataFactoryName.outputs.factoryName
         with:
           inlineScript: |
-            az datafactory trigger stop --resource-group "${{ secrets.AZURE_RG }}" --factory-name "${{ steps.getDataFactoryName.outputs.factoryName }}" --name "invoice-pipeline-trigger"
+            az datafactory trigger start --resource-group konexis-rg --factory-name "${{ steps.getDataFactoryName.outputs.factoryName }}" --name "invoice-pipeline-trigger"
