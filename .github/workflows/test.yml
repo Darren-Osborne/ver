@@ -22,7 +22,7 @@ jobs:
       - name: Get Data Factory Name
         id: getDataFactoryName
         run: |
-          factoryName=$(az datafactory list --resource-group konexis-rg --query "[].[name][0]" --output tsv)
+          factoryName=$(az datafactory list --resource-group ${{ secrets.AZURE_RG }} --query "[].[name][0]" --output tsv)
           echo "factoryName=$factoryName" >> $GITHUB_OUTPUT
 
       - name: Echo
