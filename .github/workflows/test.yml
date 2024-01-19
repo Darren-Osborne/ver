@@ -1,0 +1,33 @@
+name: test
+
+on: push
+
+jobs:
+  deploy-matrix:
+    strategy:
+      max-parallel: 1
+      matrix:
+        env: [Dev]
+    runs-on: ubuntu-latest
+    name: deploy ${{matrix.env}}
+    environment: ${{matrix.env}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Get Data Factory Name
+        id: getDataFactoryName
+        run: |
+          factoryName=$(az datafactory list --resource-group konexis-uat-rg --query "[].[name][0]" --output tsv)
+          echo "factoryName=$factoryName" >> $GITHUB_OUTPUT
+
+      - name: Disable trigger
+        uses: azure/CLI@v1
+        if: steps.getDataFactoryName.outputs.factoryName
+        with:
+          inlineScript: |
+            az datafactory trigger stop --resource-group "${{ secrets.AZURE_RG }}" --factory-name "${{ steps.getDataFactoryName.outputs.factoryName }}" --name "invoice-pipeline-trigger"
